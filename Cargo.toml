@@ -1,0 +1,10 @@
+[package]
+name = "software-rasterizer"
+version = "0.1.0"
+authors = ["Gidong Kwon <lucidfext@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+cgmath = "0.17.0"
+glutin = "0.24.1"
+glium = "*"
