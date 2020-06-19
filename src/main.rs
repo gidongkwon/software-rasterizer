@@ -88,7 +88,10 @@ fn draw_triangle(frame: &mut Frame, v0: Vertex, v1: Vertex, v2: Vertex) {
         for y in min_y..=max_y {
             let weight = get_barycentric(vec2(x as f32, y as f32), v0.into(), v1.into(), v2.into());
             if weight[0] >= 0.0 && weight[1] >= 0.0 && weight[2] >= 0.0 {
-                draw_pixel(frame, x, y, vec4(weight[0], weight[1], weight[2], 1.0));
+                let r = weight[0] * v0.color.x + weight[1] * v1.color.x + weight[2] * v2.color.x;
+                let g = weight[0] * v0.color.y + weight[1] * v1.color.y + weight[2] * v2.color.y;
+                let b = weight[0] * v0.color.z + weight[1] * v1.color.z + weight[2] * v2.color.z;
+                draw_pixel(frame, x, y, vec4(r, g, b, 1.0));
             }
         }
     }
